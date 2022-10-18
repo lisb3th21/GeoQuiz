@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">GeoQuiz</string>
+    <string name="boton_siguiente">Siguiente</string>
+    <string name="boton_anterior">Anterior</string>
+
+    <string name="boton_true">True</string>
+    <string name="boton_false">False</string>
+
+    <!--Question banck-->
+    <string-array name="questionsTrue">
+        <item >The largest country in the world is Russia</item>
+        <item >There are dolphins in the Amazon river</item>
+        <item>The capital city of Australia is Canberra.</item>
+        <item>Mount Snowdon is the highest mountain in Wales.</item>
+        <item>Kabul is the capital of Afghanistan. </item>
+    </string-array>
+
+    <string-array name="questionsFalse">
+        <item>The River Thames flows through Cambridge.</item>
+        <item>More people live in Venice than Bari, Italy.</item>
+        <item>Male is the capital of Malaysia.</item>
+        <item>Tributaries are the largest type of river.</item>
+        <item>Iceland is the country with the most active volcanoes in the world</item>
+
+
+    </string-array>
+
+
+</resources>
