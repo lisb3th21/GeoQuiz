@@ -85,9 +85,11 @@
             android:layout_margin="5dp"
             android:textStyle="bold"
             android:text="@string/boton_true"
+            android:onClick="trueButton"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="216dp"
-            tools:layout_editor_absoluteY="399dp" />
+            tools:layout_editor_absoluteY="399dp"
+            />
 
         <Button
             android:id="@+id/boton_false"
@@ -97,6 +99,7 @@
             android:layout_margin="5dp"
             android:textStyle="bold"
             android:text="@string/boton_false"
+            android:onClick="falseButton"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="399dp"
