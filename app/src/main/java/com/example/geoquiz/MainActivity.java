@@ -39,11 +39,16 @@ public class MainActivity extends AppCompatActivity {
         int contador=1;
         numPreguntas = question_bank.size();
         Question question ;
-//        while (contador<numPreguntas){
+      while (contador<numPreguntas){
             question = getHideQuestion();
             contador++;
-//        }
-    questionView.setText(question.getTextResId());
+          questionView.setText(question.getTextResId());
+          /**
+           * TODO poner los metodos de botones
+           */
+        }
+
+
     }
 
     public void addQuestions(){
@@ -73,17 +78,42 @@ public class MainActivity extends AppCompatActivity {
             question.setContestada(Answered.INCORRECT);
         }
     }
+public void anteriorButton(View view){
+        // TODO añadir metodo
+}
 
+public void mostrarPreguntas(Question question, TextView textView, Button trueButton, Button falseButton, ){
+    textView.setText(question.getTextResId());
+
+     if(question.getContestada().equals(Answered.CORRECT) || question.getContestada().equals(Answered.INCORRECT) ){
+                trueButton.setVisibility(View.INVISIBLE);
+                falseButton.setVisibility(View.INVISIBLE);
+            }
+}
     public Question getHideQuestion(){
         Question question = new Question();
         boolean hide = false;
+        int contador =0;
+
         do {
             question = question_bank.get(ran.nextInt(question_bank.size()));
             if(question.getContestada().equals(Answered.HIDE)){
                 hide = true;
             }
-        }while (hide);
+        }while (!hide);
         return  question;
+    }
+
+    /**
+     * ejecute end of the questions
+     */
+    public void calculateResults(){
+        int corectas = 0;
+        int incorrectas = 0;
+        for (Question question:question_bank) {
+            if(question.getContestada().equals(Answered.CORRECT))  corectas++ ;
+            else incorrectas++;
+        }
     }
 
 }
