@@ -108,15 +108,15 @@ public class MainActivity extends AppCompatActivity {
      * ejecute end of the questions
      */
     public void calculateResults() {
-        int corectas = 0;
+        int correctas = 0;
         int incorrectas = 0;
         for (Question question : question_bank) {
-            if (question.getContestada().equals(Answered.CORRECT)) corectas++;
+            if (question.getContestada().equals(Answered.CORRECT)) correctas++;
             else incorrectas++;
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Results");
-        builder.setMessage("Corrects= "+corectas+"\nIncorrects= "+incorrectas);
+        builder.setMessage("Corrects= "+correctas+"\nIncorrects= "+incorrectas);
         builder.setPositiveButton("Try again", (dialog, which) -> {
             position=0;
             question_bank = new ArrayList<>();
