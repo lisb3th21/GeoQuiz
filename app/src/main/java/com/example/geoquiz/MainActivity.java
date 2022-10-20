@@ -2,9 +2,11 @@
 package com.example.geoquiz;
 
 import android.app.AlertDialog;
+import android.graphics.Color;
 import android.os.Parcelable;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -71,16 +73,21 @@ public class MainActivity extends AppCompatActivity {
      * @param target The view that was clicked.
      */
     public void trueButton(View target) {
-        Button bt = (Button) findViewById(R.id.boton_true);
-        bt.setEnabled(false);
+
+
         if (question_bank.get(position).isAnswer()) {
 
             question_bank.get(position).setContestada(Answered.CORRECT);
+            Button bt = (Button) findViewById(R.id.boton_false);
+            changeButtons((Button) target, bt);
+
             Log.d(DEBUG_TAG, question_bank.get(position).toString());
         } else {
             question_bank.get(position).setContestada(Answered.INCORRECT);
-            Log.d(DEBUG_TAG, question_bank.get(position).toString());
+            Button bt = (Button) findViewById(R.id.boton_false);
+            changeButtons((Button) target, bt);
         }
+
         if (allAnswered()) {
             calculateResults();
         }
@@ -102,13 +109,20 @@ public class MainActivity extends AppCompatActivity {
      * @param target The view that was clicked.
      */
     public void falseButton(View target) {
-        Button bt = (Button) findViewById(R.id.boton_false);
-        bt.setEnabled(false);
+
+
         if (!question_bank.get(position).isAnswer()) {
+
             question_bank.get(position).setContestada(Answered.CORRECT);
+            Button bt = (Button) findViewById(R.id.boton_true);
+            changeButtons((Button) target, bt);
+
         } else {
             question_bank.get(position).setContestada(Answered.INCORRECT);
+            Button bt = (Button) findViewById(R.id.boton_true);
+            changeButtons((Button) target, bt);
         }
+
         if (allAnswered()) {
             calculateResults();
         }
@@ -139,17 +153,52 @@ public class MainActivity extends AppCompatActivity {
         } else {
             findViewById(R.id.boton_siguiente).setVisibility(View.VISIBLE);
         }
-        if (question.getContestada().equals(Answered.CORRECT) || question.getContestada().equals(Answered.INCORRECT)) {
-            findViewById(R.id.boton_true).setVisibility(View.INVISIBLE);
-            findViewById(R.id.boton_false).setVisibility(View.INVISIBLE);
+        if (question.getContestada().equals(Answered.CORRECT) ) {
+            if(question.isAnswer()){
+                Button bt= (Button) findViewById(R.id.boton_true);
+                Button bt1= (Button) findViewById(R.id.boton_false);
+                changeButtons(bt, bt1);
+            }else {
+                Button bt= (Button) findViewById(R.id.boton_true);
+                Button bt1= (Button) findViewById(R.id.boton_false);
+                changeButtons(bt1, bt);
+            }
 
-        } else {
-            Button bt = (Button) findViewById(R.id.boton_false);
-            bt.setEnabled(true);
-            bt = (Button) findViewById(R.id.boton_true);
-            bt.setEnabled(true);
-            findViewById(R.id.boton_true).setVisibility(View.VISIBLE);
-            findViewById(R.id.boton_false).setVisibility(View.VISIBLE);
+
+        } else if(question.getContestada().equals(Answered.INCORRECT)){
+            if(!question.isAnswer()){
+                Button bt= (Button) findViewById(R.id.boton_true);
+                Button bt1= (Button) findViewById(R.id.boton_false);
+                changeButtons(bt, bt1);
+            }else {
+                Button bt= (Button) findViewById(R.id.boton_true);
+                Button bt1= (Button) findViewById(R.id.boton_false);
+                changeButtons(bt1, bt);
+            }
+        }else {
+            Button bt= (Button) findViewById(R.id.boton_true);
+            Button bt1= (Button) findViewById(R.id.boton_false);
+            changeButtons(bt1, bt);
+
+        }
+
+    }
+
+    public void changeButtons(Button btClick, Button other){
+        btClick.setEnabled(false);
+        other.setEnabled(false);
+        if(question_bank.get(position).getContestada().equals(Answered.CORRECT)){
+            btClick.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.correct));
+
+        }else if(question_bank.get(position).getContestada().equals(Answered.INCORRECT)){
+
+            btClick.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.incorrect));
+
+        }else{
+            btClick.setEnabled(true);
+            btClick.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.white));
+            other.setEnabled(true);
+
         }
 
     }

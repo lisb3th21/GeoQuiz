@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="night">#282B30</color>
     <color name="green">#008000</color>
+    <color name="correct">#008000</color>
+    <color name="incorrect">#ff0000 </color>
 </resources>
