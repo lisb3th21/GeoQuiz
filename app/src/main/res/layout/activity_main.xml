@@ -10,14 +10,15 @@
 
     <TextView
         android:id="@+id/preguntas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="411dp"
+        android:layout_margin="40dp"
         android:fontFamily="sans-serif-black"
         android:text="Prueba se deberá ir cambiando"
         android:textAlignment="center"
         android:textColor="@color/white"
-android:layout_margin="40dp"
-        android:textSize="30dp"
+        android:textSize="30sp"
+        android:layout_marginHorizontal="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -76,7 +77,7 @@ android:layout_margin="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/preguntas"
-        app:layout_constraintVertical_bias="0.252">
+        app:layout_constraintVertical_bias="0.384">
 
         <Button
             android:id="@+id/boton_true"
@@ -84,13 +85,12 @@ android:layout_margin="40dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal"
             android:layout_margin="5dp"
-            android:textStyle="bold"
-            android:text="@string/boton_true"
             android:onClick="trueButton"
+            android:text="@string/boton_true"
+            android:textStyle="bold"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="216dp"
-            tools:layout_editor_absoluteY="399dp"
-            />
+            tools:layout_editor_absoluteY="399dp" />
 
         <Button
             android:id="@+id/boton_false"
@@ -98,13 +98,12 @@ android:layout_margin="40dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal"
             android:layout_margin="5dp"
-            android:textStyle="bold"
-            android:text="@string/boton_false"
             android:onClick="falseButton"
+            android:text="@string/boton_false"
+            android:textStyle="bold"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="399dp"
-            />
+            tools:layout_editor_absoluteY="399dp" />
     </LinearLayout>
 
 
