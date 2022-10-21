@@ -1,4 +1,3 @@
-
 package com.example.geoquiz;
 
 import android.app.AlertDialog;
@@ -18,14 +17,14 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<Question> question_bank = new ArrayList<>();
+    private static ArrayList<Question> question_bank = new ArrayList<>();
     private static final String DEBUG_TAG = "texto";
     static final String BUNDLE_POSICION = "position";
     private int position;
 
     /**
      * The function onCreate() is called when the activity is created.
-     * 
+     *
      * @param savedInstanceState A Bundle object containing the activity's
      *                           previously saved state.
      */
@@ -35,12 +34,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Objects.requireNonNull(getSupportActionBar()).hide();
         addQuestions();
-
         if (savedInstanceState != null) {
-
             position = savedInstanceState.getInt(BUNDLE_POSICION);
         } else {
-
             position = 0;
         }
         mostrarPreguntas(question_bank.get(position));
@@ -69,14 +65,11 @@ public class MainActivity extends AppCompatActivity {
      * question is marked as
      * answered, and if all the questions have been answered, the results are
      * calculated.
-     * 
+     *
      * @param target The view that was clicked.
      */
     public void trueButton(View target) {
-
-
         if (question_bank.get(position).isAnswer()) {
-
             question_bank.get(position).setContestada(Answered.CORRECT);
             Button bt = (Button) findViewById(R.id.boton_false);
             changeButtons((Button) target, bt);
@@ -97,15 +90,15 @@ public class MainActivity extends AppCompatActivity {
      * When the user clicks the false button, the button is disabled, and the
      * question is marked as
      * answered.
-     * 
+     *
      * The function is called from the XML file, and the button is disabled.
-     * 
+     *
      * The function then checks if all the questions have been answered, and if they
      * have, it calls the
      * calculateResults() function.
-     * 
+     *
      * The calculateResults() function is as follows:
-     * 
+     *
      * @param target The view that was clicked.
      */
     public void falseButton(View target) {
@@ -130,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * It displays the question and the buttons
-     * 
+     *
      * @param question is the question object that contains the question text and
      *                 the answer.
      */
@@ -149,7 +142,6 @@ public class MainActivity extends AppCompatActivity {
                 if (q.getContestada().equals(Answered.CORRECT) || q.getContestada().equals(Answered.INCORRECT))
                     contestadas++;
             }
-
         } else {
             findViewById(R.id.boton_siguiente).setVisibility(View.VISIBLE);
         }
@@ -163,8 +155,6 @@ public class MainActivity extends AppCompatActivity {
                 Button bt1= (Button) findViewById(R.id.boton_false);
                 changeButtons(bt1, bt);
             }
-
-
         } else if(question.getContestada().equals(Answered.INCORRECT)){
             if(!question.isAnswer()){
                 Button bt= (Button) findViewById(R.id.boton_true);
@@ -189,18 +179,17 @@ public class MainActivity extends AppCompatActivity {
         other.setEnabled(false);
         if(question_bank.get(position).getContestada().equals(Answered.CORRECT)){
             btClick.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.correct));
-
+            other.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.white));
         }else if(question_bank.get(position).getContestada().equals(Answered.INCORRECT)){
 
             btClick.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.incorrect));
-
+            other.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.white));
         }else{
             btClick.setEnabled(true);
             btClick.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.white));
             other.setEnabled(true);
-
+            other.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.white));
         }
-
     }
 
     /**
@@ -234,7 +223,7 @@ public class MainActivity extends AppCompatActivity {
      * The function is called when the user clicks the next button. It increments
      * the position variable by
      * 1 and then calls the mostrarPreguntas() function to display the next question
-     * 
+     *
      * @param view The view that was clicked.
      */
     public void nextButton(View view) {
@@ -247,7 +236,7 @@ public class MainActivity extends AppCompatActivity {
      * the position by 1 and
      * then calls the function mostrarPreguntas() with the question at the new
      * position.
-     * 
+     *
      * @param view The view that was clicked.
      */
     public void previousButton(View view) {
@@ -257,7 +246,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * It returns true if all the questions in the question bank have been answered
-     * 
+     *
      * @return The number of questions that have been answered correctly or
      *         incorrectly.
      */
@@ -273,7 +262,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * When the activity is destroyed, save the current position in the bundle.
-     * 
+     *
      * @param savedInstanceState A Bundle object containing the activity's
      *                           previously saved state.
      */
@@ -289,7 +278,7 @@ public class MainActivity extends AppCompatActivity {
      * activity is being
      * re-initialized from a previously saved state, given here in
      * savedInstanceState
-     * 
+     *
      * @param savedInstanceState A Bundle object containing the activity's
      *                           previously saved state.
      */

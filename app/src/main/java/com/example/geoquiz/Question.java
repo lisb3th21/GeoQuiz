@@ -4,6 +4,11 @@
  */
 package com.example.geoquiz;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
 public class Question {
     private String textResId;
     private boolean answer;
@@ -70,6 +75,8 @@ public class Question {
         this.contestada = Answered.HIDE;
     }
 
+
+
 /**
  * The toString() method returns a string representation of the object
  * 
@@ -83,4 +90,6 @@ public class Question {
                 ", contestada=" + contestada +
                 '}';
     }
+
+
 }
