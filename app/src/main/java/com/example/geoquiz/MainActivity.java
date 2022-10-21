@@ -35,12 +35,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Objects.requireNonNull(getSupportActionBar()).hide();
         addQuestions();
-
         if (savedInstanceState != null) {
-
             position = savedInstanceState.getInt(BUNDLE_POSICION);
         } else {
-
             position = 0;
         }
         mostrarPreguntas(question_bank.get(position));
@@ -73,10 +70,7 @@ public class MainActivity extends AppCompatActivity {
      * @param target The view that was clicked.
      */
     public void trueButton(View target) {
-
-
         if (question_bank.get(position).isAnswer()) {
-
             question_bank.get(position).setContestada(Answered.CORRECT);
             Button bt = (Button) findViewById(R.id.boton_false);
             changeButtons((Button) target, bt);
@@ -149,7 +143,6 @@ public class MainActivity extends AppCompatActivity {
                 if (q.getContestada().equals(Answered.CORRECT) || q.getContestada().equals(Answered.INCORRECT))
                     contestadas++;
             }
-
         } else {
             findViewById(R.id.boton_siguiente).setVisibility(View.VISIBLE);
         }
@@ -163,8 +156,6 @@ public class MainActivity extends AppCompatActivity {
                 Button bt1= (Button) findViewById(R.id.boton_false);
                 changeButtons(bt1, bt);
             }
-
-
         } else if(question.getContestada().equals(Answered.INCORRECT)){
             if(!question.isAnswer()){
                 Button bt= (Button) findViewById(R.id.boton_true);
@@ -189,18 +180,17 @@ public class MainActivity extends AppCompatActivity {
         other.setEnabled(false);
         if(question_bank.get(position).getContestada().equals(Answered.CORRECT)){
             btClick.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.correct));
-
+            other.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.white));
         }else if(question_bank.get(position).getContestada().equals(Answered.INCORRECT)){
 
             btClick.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.incorrect));
-
+            other.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.white));
         }else{
             btClick.setEnabled(true);
             btClick.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.white));
             other.setEnabled(true);
-
+            other.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.white));
         }
-
     }
 
     /**
