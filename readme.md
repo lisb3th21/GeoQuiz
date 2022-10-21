@@ -38,3 +38,25 @@ In the MainActivity I create an `ArrayList` of `Questions`. The program will dis
 
     }
 ```
+
+And the style of the buttons change by the following function:
+
+```java 
+    public void changeButtons(Button btClick, Button other){
+        btClick.setEnabled(false);
+        other.setEnabled(false);
+        if(question_bank.get(position).getContestada().equals(Answered.CORRECT)){
+            btClick.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.correct));
+            other.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.white));
+        }else if(question_bank.get(position).getContestada().equals(Answered.INCORRECT)){
+
+            btClick.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.incorrect));
+            other.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.white));
+        }else{
+            btClick.setEnabled(true);
+            btClick.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.white));
+            other.setEnabled(true);
+            other.setBackgroundTintList(getApplicationContext().getResources().getColorStateList(R.color.white));
+        }
+    }
+```
